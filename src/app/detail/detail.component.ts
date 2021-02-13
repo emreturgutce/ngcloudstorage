@@ -14,6 +14,6 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     const owners = this.crudService.getAllOwners();
 
-    console.log(owners)
+    console.log(owners);
   }
 }

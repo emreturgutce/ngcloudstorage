@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CrudService, Owner } from '../service/crud.service';
 
 @Component({
@@ -7,11 +7,9 @@ import { CrudService, Owner } from '../service/crud.service';
   styleUrls: ['./owner-list.component.css'],
 })
 export class OwnerListComponent implements OnInit {
-  owners: Owner[]
+  @Input() owners: Owner[];
 
-  constructor(private crudService: CrudService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.owners = this.crudService.getAllOwners();
-  }
+  ngOnInit() {}
 }

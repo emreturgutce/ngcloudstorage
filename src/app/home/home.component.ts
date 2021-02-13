@@ -14,9 +14,11 @@ export class HomeComponent implements OnInit {
   ownerAge: number;
   ownerAddress: string;
   petName: string;
-  petType: "dog" | "cat" | "fish";
+  petType: 'dog' | 'cat' | 'fish';
+  petOwnerId: string;
   petAge: string;
   file: File;
+  owners: Owner[];
 
   @Output() isLogout = new EventEmitter<void>();
   constructor(
@@ -24,7 +26,9 @@ export class HomeComponent implements OnInit {
     private firebaseService: FirebaseService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.owners = this.crudService.getAllOwners();
+  }
 
   logout() {
     this.firebaseService.logout();
@@ -33,7 +37,7 @@ export class HomeComponent implements OnInit {
 
   async createRecord() {
     try {
-      const record: Owner = {
+      const record: any = {
         name: this.ownerName,
         age: this.ownerAge,
         address: this.ownerAddress,
@@ -53,9 +57,14 @@ export class HomeComponent implements OnInit {
   }
 
   handleFileInput(files: FileList) {
-    this.file = files.item(0)
-    console.log(this.file)
+    this.file = files.item(0);
   }
 
-  createPet() {}
+  createPet() {
+    this.crudService.addPetToOwner({
+      name: this.petName,
+      ownerId: this.petOwnerId,
+      type: this.petType,
+    });
+  }
 }
