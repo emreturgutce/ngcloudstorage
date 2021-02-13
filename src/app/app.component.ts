@@ -1,38 +1,41 @@
-import { Component } from '@angular/core';
-import { CrudService, Owner } from './service/crud.service';
+import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from './service/firebase.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  title = 'ngcloudstorage';
-  message = '';
-  owner: string;
-  ownerName: string;
-  ownerAge: number;
-  ownerAddress: string;
+export class AppComponent implements OnInit {
+  title = 'firebase-angular-auth';
+  isLoggedIn = false;
 
-  constructor(private crudService: CrudService) {}
+  constructor(private firebaseService: FirebaseService) {}
 
-  async createRecord() {
-    try {
-      const record: Owner = {
-        name: this.ownerName,
-        age: this.ownerAge,
-        address: this.ownerAddress,
-      };
-
-      await this.crudService.createNewOwner(record);
-
-      this.message = 'Record saved to Firebase';
-    } catch (error) {
-      console.error(error);
-    } finally {
-      this.ownerName = '';
-      this.ownerAge = undefined;
-      this.ownerAddress = '';
+  ngOnInit() {
+    if (localStorage.getItem('user') !== null) {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
     }
+  }
+
+  async onSignup(email: string, password: string) {
+    await this.firebaseService.signup(email, password);
+
+    if (this.firebaseService.isLoggedIn) {
+      this.isLoggedIn = true;
+    }
+  }
+
+  async onSignin(email: string, password: string) {
+    await this.firebaseService.signin(email, password);
+    if (this.firebaseService.isLoggedIn) {
+      this.isLoggedIn = true;
+    }
+  }
+
+  async onLogout() {
+    this.isLoggedIn = false;
   }
 }

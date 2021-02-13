@@ -6,10 +6,12 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { CrudService } from './service/crud.service'
+import { FirebaseService } from './service/firebase.service'
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -17,7 +19,7 @@ import { AppComponent } from './app.component';
     AngularFireStorageModule,
     AngularFireDatabaseModule
   ],
-  providers: [CrudService],
+  providers: [CrudService, FirebaseService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
