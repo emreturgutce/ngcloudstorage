@@ -8,6 +8,7 @@ import { CrudService, Owner } from './service/crud.service';
 })
 export class AppComponent {
   title = 'ngcloudstorage';
+  message = '';
   owner: string;
   ownerName: string;
   ownerAge: number;
@@ -24,6 +25,8 @@ export class AppComponent {
       };
 
       await this.crudService.createNewOwner(record);
+
+      this.message = 'Record saved to Firebase';
     } catch (error) {
       console.error(error);
     } finally {
