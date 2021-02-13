@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 export interface Owner {
   id: string;
@@ -13,16 +14,36 @@ export interface Pet {
   name: string;
   type: 'dog' | 'cat' | 'fish';
   ownerId: string;
+  imageId?: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class CrudService {
-  constructor(private fireservice: AngularFirestore) {}
+  constructor(
+    private fireservice: AngularFirestore,
+    private storage: AngularFireStorage
+  ) {}
+
+  uploadImage(imageId: string, file: File) {
+    this.storage.upload(imageId, file);
+  }
 
   updateOwner(ownerId: string, data: Owner) {
     return this.fireservice.doc(`Owners/${ownerId}`).update(data);
+  }
+
+  async getOwnerByName(name: string) {
+    const arr = [];
+    (
+      await this.fireservice
+        .collection('Owners')
+        .ref.where('name', '==', name)
+        .get()
+    ).forEach((doc) => arr.push({ ...(doc.data() as object), id: doc.id }));
+
+    return arr[0];
   }
 
   deleteOwner(ownerId: string) {
@@ -47,6 +68,9 @@ export class CrudService {
 
     return owners;
   }
-
-  async addPetToOwner(pet: Pet) {}
+  async addPetToOwner(pet: Pet) {
+    return this.fireservice
+      .doc(`Owners/${pet.ownerId}`)
+      .update({ pets: { name: pet.name, type: pet.type, image: pet.imageId } });
+  }
 }

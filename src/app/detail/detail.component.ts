@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CrudService, Owner } from '../service/crud.service';
 
 @Component({
@@ -8,12 +9,15 @@ import { CrudService, Owner } from '../service/crud.service';
 })
 export class DetailComponent implements OnInit {
   owner: Owner;
+  name: string;
 
-  constructor(private crudService: CrudService) {}
+  constructor(
+    private crudService: CrudService,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {
-    const owners = this.crudService.getAllOwners();
-
-    console.log(owners);
+  async ngOnInit() {
+    this.name = this.route.snapshot.paramMap.get('name');
+    this.owner = await this.crudService.getOwnerByName(this.name);
   }
 }

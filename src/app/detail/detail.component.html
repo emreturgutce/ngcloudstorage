@@ -1,1 +1,10 @@
-<p>detail works!</p>
+<div class="card">
+  <div class="card-header">
+    {{ owner?.name }}
+  </div>
+  <div class="card-body">
+    <ul class="list">
+		<li>{{ owner?.pets?.name }}</li>
+	</ul>
+  </div>
+</div>

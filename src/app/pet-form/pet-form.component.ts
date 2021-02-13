@@ -24,10 +24,25 @@ export class PetFormComponent implements OnInit {
   }
 
   createPet() {
-    this.crudService.addPetToOwner({
-      name: this.petName,
-      ownerId: this.petOwnerId,
-      type: this.petType,
-    });
+    if (this.file) {
+      const filename = `${String(Math.floor(Math.random() * 1000000))}.${
+        this.file.name.split('.')[1]
+      }`;
+
+      this.crudService.uploadImage(filename, this.file);
+
+      this.crudService.addPetToOwner({
+        name: this.petName,
+        ownerId: this.petOwnerId,
+        type: this.petType,
+        imageId: filename,
+      });
+    } else {
+      this.crudService.addPetToOwner({
+        name: this.petName,
+        ownerId: this.petOwnerId,
+        type: this.petType,
+      });
+    }
   }
 }

@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.owners = this.crudService.getAllOwners();
+    console.log(this.owners)
   }
 
   logout() {
