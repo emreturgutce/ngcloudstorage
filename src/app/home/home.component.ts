@@ -10,10 +10,13 @@ import { FirebaseService } from '../service/firebase.service';
 export class HomeComponent implements OnInit {
   title = 'ngcloudstorage';
   message = '';
-  owner: string;
   ownerName: string;
   ownerAge: number;
   ownerAddress: string;
+  petName: string;
+  petType: "dog" | "cat" | "fish";
+  petAge: string;
+  file: File;
 
   @Output() isLogout = new EventEmitter<void>();
   constructor(
@@ -34,6 +37,7 @@ export class HomeComponent implements OnInit {
         name: this.ownerName,
         age: this.ownerAge,
         address: this.ownerAddress,
+        pets: [],
       };
 
       await this.crudService.createNewOwner(record);
@@ -47,4 +51,11 @@ export class HomeComponent implements OnInit {
       this.ownerAddress = '';
     }
   }
+
+  handleFileInput(files: FileList) {
+    this.file = files.item(0)
+    console.log(this.file)
+  }
+
+  createPet() {}
 }

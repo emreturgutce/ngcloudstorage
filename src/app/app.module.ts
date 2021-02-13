@@ -9,12 +9,16 @@ import { CrudService } from './service/crud.service'
 import { FirebaseService } from './service/firebase.service'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-
+import { AppRoutingModule } from './app-routing.module';
+import { DetailComponent } from './detail/detail.component';
+import { OwnerListComponent } from './owner-list/owner-list.component';
+import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, DetailComponent, OwnerListComponent, NavbarComponent],
   imports: [
     BrowserModule,
     FormsModule,
+    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     AngularFireDatabaseModule
