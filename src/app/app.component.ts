@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage';
+import { CrudService, Owner } from './service/crud.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,28 @@ import { AngularFireStorage } from '@angular/fire/storage';
 })
 export class AppComponent {
   title = 'ngcloudstorage';
+  owner: string;
+  ownerName: string;
+  ownerAge: number;
+  ownerAddress: string;
 
-  constructor(private afStorage: AngularFireStorage) {}
+  constructor(private crudService: CrudService) {}
+
+  async createRecord() {
+    try {
+      const record: Owner = {
+        name: this.ownerName,
+        age: this.ownerAge,
+        address: this.ownerAddress,
+      };
+
+      await this.crudService.createNewOwner(record);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.ownerName = '';
+      this.ownerAge = undefined;
+      this.ownerAddress = '';
+    }
+  }
 }
