@@ -13,8 +13,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { DetailComponent } from './detail/detail.component';
 import { OwnerListComponent } from './owner-list/owner-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { OwnerFormComponent } from './owner-form/owner-form.component';
+import { PetFormComponent } from './pet-form/pet-form.component';
+import { EditOwnerComponent } from './edit-owner/edit-owner.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DetailComponent, OwnerListComponent, NavbarComponent],
+  declarations: [AppComponent, HomeComponent, DetailComponent, OwnerListComponent, NavbarComponent, OwnerFormComponent, PetFormComponent, EditOwnerComponent],
   imports: [
     BrowserModule,
     FormsModule,

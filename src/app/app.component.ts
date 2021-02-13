@@ -13,11 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private firebaseService: FirebaseService) {}
 
   ngOnInit() {
-    if (localStorage.getItem('user') !== null) {
-      this.isLoggedIn = true;
-    } else {
-      this.isLoggedIn = false;
-    }
+    this.isLoggedIn = localStorage.getItem('user') !== null;
   }
 
   async onSignup(email: string, password: string) {

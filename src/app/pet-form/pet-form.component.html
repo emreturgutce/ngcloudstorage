@@ -1,0 +1,66 @@
+<div>
+  <h3>Pet Form</h3>
+</div>
+<hr />
+<div class="form-group">
+  <input
+    type="text"
+    class="form-control"
+    [(ngModel)]="petName"
+    placeholder="Enter Pet Name"
+  />
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect04">Pet Type</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect04" [(ngModel)]="petType">
+    <option selected></option>
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="fish">Fish</option>
+  </select>
+</div>
+<div class="input-group mt-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect05">Owner</label>
+  </div>
+  <select
+    class="custom-select"
+    id="inputGroupSelect05"
+    [(ngModel)]="petOwnerId"
+  >
+    <option selected></option>
+    <option [ngValue]="owner.id" *ngFor="let owner of owners">
+      {{ owner.name }}
+    </option>
+  </select>
+</div>
+<div class="form-group mt-3">
+  <div class="custom-file">
+    <input
+      type="file"
+      class="custom-file-input"
+      id="dropzoneBasicUpload"
+      accept="image/*"
+      (change)="handleFileInput($event.target.files)"
+    />
+    <label class="custom-file-label" for="dropzoneBasicUpload"
+      >Choose file</label
+    >
+  </div>
+</div>
+<div class="form-group">
+  <button
+    class="btn btn-primary"
+    [disabled]="!petName || !petType || !petOwnerId"
+    (click)="createPet()"
+  >
+    Create Pet
+  </button>
+</div>
+<div class="form-group">
+  <h4>
+    <b>{{ message }}</b>
+  </h4>
+</div>
