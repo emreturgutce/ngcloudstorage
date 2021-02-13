@@ -21,7 +21,15 @@ export interface Pet {
 export class CrudService {
   constructor(private fireservice: AngularFirestore) {}
 
-  createNewOwner(owner: Owner): Promise<any> {
+  updateOwner(ownerId: string, data: Owner) {
+    return this.fireservice.doc(`Owners/${ownerId}`).update(data);
+  }
+
+  deleteOwner(ownerId: string) {
+    return this.fireservice.doc(`Owners/${ownerId}`).delete();
+  }
+
+  createNewOwner(owner: Owner) {
     return this.fireservice.collection('Owners').add(owner);
   }
 

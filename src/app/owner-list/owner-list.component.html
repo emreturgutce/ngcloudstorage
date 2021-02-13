@@ -3,13 +3,18 @@
 </div>
 <hr />
 <div class="list-group">
-  <a
-  [routerLink]="['/detail', owner.name]"
+  <div
     *ngFor="let owner of owners"
     class="list-group-item list-group-item-action flex-column align-items-start"
   >
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{ owner.name }}</h5>
+    <div class="d-flex w-100 justify-content-between align-items-center">
+      <a [routerLink]="['/detail', owner.name]">
+        <h5 class="mb-1">{{ owner.name }}</h5>
+      </a>
+      <div>
+        <button class="btn btn-success mr-3">Edit</button>
+        <button class="btn btn-danger" (click)="handleDelete(owner.id)">Delete</button>
+      </div>
     </div>
-  </a>
+  </div>
 </div>

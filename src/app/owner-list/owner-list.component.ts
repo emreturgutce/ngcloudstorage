@@ -9,7 +9,11 @@ import { CrudService, Owner } from '../service/crud.service';
 export class OwnerListComponent implements OnInit {
   @Input() owners: Owner[];
 
-  constructor() {}
+  constructor(private crudService: CrudService) {}
 
   ngOnInit() {}
+
+  async handleDelete(ownerId: string) {
+    await this.crudService.deleteOwner(ownerId);
+  }
 }
