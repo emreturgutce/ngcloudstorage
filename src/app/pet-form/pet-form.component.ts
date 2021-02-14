@@ -13,8 +13,8 @@ export class PetFormComponent implements OnInit {
   type: 'dog' | 'cat' | 'fish';
   message = '';
   ownerId: string;
-  file: File; 
-  
+  file: File;
+
   constructor(private crudService: CrudService) {}
 
   ngOnInit(): void {
@@ -51,6 +51,8 @@ export class PetFormComponent implements OnInit {
         type: this.type,
       });
     }
+
+    location.href = '/';
   }
 
   updatePet() {

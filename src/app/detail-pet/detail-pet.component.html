@@ -6,14 +6,18 @@
           <div class="pv-lg">
             <img
               class="center-block img-responsive img-circle img-thumbnail thumb96"
-              src="https://bootdey.com/img/Content/avatar/avatar1.png"
+              src="https://static.toiimg.com/thumb/msid-67586673,width-800,height-600,resizemode-75,imgsize-3918697,pt-32,y_pad-40/67586673.jpg"
               alt="Contact"
               width="300px"
             />
           </div>
-          <h3 class="m0 text-bold">{{ pet.name }}</h3>
+          <div class="list-group-item bg-light rounded my-3">
+            <h3 class="m0 text-bold">{{ pet.name }}</h3>
+          </div>
           <div class="">
-            <button class="btn btn-danger" (click)="onDelete()" >Delete Pet</button>
+            <button class="btn btn-danger" (click)="onDelete()">
+              Delete Pet
+            </button>
           </div>
         </div>
       </div>
