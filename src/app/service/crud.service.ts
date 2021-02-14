@@ -8,6 +8,7 @@ export interface Owner {
   age: number;
   email: string;
   phone: string;
+  gender: 'male' | 'female';
 }
 
 export interface Pet {

@@ -16,9 +16,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label" for="inputContact2"
-            >Email</label
-          >
+          <label class="control-label" for="inputContact2">Email</label>
           <div>
             <input
               class="form-control"
@@ -30,9 +28,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label" for="inputContact3"
-            >Phone</label
-          >
+          <label class="control-label" for="inputContact3">Phone</label>
           <div>
             <input
               class="form-control"
@@ -52,7 +48,24 @@
               type="number"
               [(ngModel)]="age"
               name="age"
+              min="0"
+              max="125"
             />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="inputGroupSelect05">Gender</label>
+          <div>
+            <select
+              class="custom-select"
+              id="inputGroupSelect05"
+              [(ngModel)]="gender"
+              name="gender"
+            >
+              <option selected></option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
           </div>
         </div>
         <div class="form-group">

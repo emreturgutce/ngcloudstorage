@@ -13,6 +13,7 @@ export class OwnerFormComponent implements OnInit {
   email: string;
   phone: string;
   age: number;
+  gender: 'male' | 'female';
 
   constructor(private crudService: CrudService) {}
 
@@ -22,6 +23,7 @@ export class OwnerFormComponent implements OnInit {
       this.email = this.owner.email;
       this.phone = this.owner.phone;
       this.age = this.owner.age;
+      this.gender = this.owner.gender || 'male';
     }
   }
 
@@ -32,6 +34,7 @@ export class OwnerFormComponent implements OnInit {
         age: this.age,
         email: this.email,
         phone: this.phone,
+        gender: this.gender,
       };
 
       await this.crudService.createNewOwner(record);
@@ -55,6 +58,7 @@ export class OwnerFormComponent implements OnInit {
       age: this.age,
       email: this.email,
       phone: this.phone,
+      gender: this.gender,
     });
     location.reload();
   }
