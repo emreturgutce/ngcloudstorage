@@ -1,0 +1,25 @@
+<div class="bootstrap snippets bootdey">
+  <div class="row ng-scope">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body text-center">
+          <div class="pv-lg">
+            <img
+              class="center-block img-responsive img-circle img-thumbnail thumb96"
+              src="https://bootdey.com/img/Content/avatar/avatar1.png"
+              alt="Contact"
+              width="300px"
+            />
+          </div>
+          <h3 class="m0 text-bold">{{ pet.name }}</h3>
+          <div class="">
+            <button class="btn btn-danger" (click)="onDelete()" >Delete Pet</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <app-pet-form [pet]="pet"></app-pet-form>
+    </div>
+  </div>
+</div>

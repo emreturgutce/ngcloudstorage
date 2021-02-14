@@ -63,10 +63,23 @@ export class CrudService {
     };
   }
 
+  async getPetByName(name: string) {
+    const arr = [];
+    (
+      await this.fireservice
+        .collection('Pets')
+        .ref.where('name', '==', name)
+        .get()
+    ).forEach((doc) => arr.push({ ...(doc.data() as object), id: doc.id }));
+    return arr[0];
+  }
+
   deleteOwner(ownerId: string) {
     return this.fireservice.doc(`Owners/${ownerId}`).delete();
   }
-
+  deletePet(petId: string) {
+    return this.fireservice.doc(`Pets/${petId}`).delete();
+  }
   createNewOwner(owner: Owner) {
     return this.fireservice.collection('Owners').add(owner);
   }

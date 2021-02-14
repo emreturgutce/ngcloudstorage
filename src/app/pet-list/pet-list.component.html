@@ -12,14 +12,6 @@
       <a [routerLink]="['/pets', pet.name]">
         <h5 class="mb-1">{{ pet?.name }}</h5>
       </a>
-      <div>
-        <a class="btn btn-success mr-3" [routerLink]="['/edit', pet.name]"
-          >Edit</a
-        >
-        <button class="btn btn-danger" (click)="handleDelete(pet.name)">
-          Delete
-        </button>
-      </div>
     </div>
   </div>
 </div>
