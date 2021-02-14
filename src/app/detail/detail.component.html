@@ -20,14 +20,17 @@
                 <li class="list-group-item bg-light font-weight-bold">Pets</li>
                 <li *ngFor="let pet of owner?.pets" class="list-group-item">
                   <a [routerLink]="['/pets', pet.id]">
-                  {{ pet.name }}
+                    {{ pet.name }}
                   </a>
                 </li>
               </ul>
             </div>
           </div>
           <div class="">
-            <button class="btn btn-danger w-100 font-weight-bold" (click)="onDelete()">
+            <button
+              class="btn btn-danger w-100 font-weight-bold"
+              (click)="onDelete()"
+            >
               Delete Owner
             </button>
           </div>
