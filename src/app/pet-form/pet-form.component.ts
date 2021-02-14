@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CrudService, Owner } from '../service/crud.service';
+import { CrudService, Owner, Pet } from '../service/crud.service';
 
 @Component({
   selector: 'app-pet-form',
@@ -7,17 +7,24 @@ import { CrudService, Owner } from '../service/crud.service';
   styleUrls: ['./pet-form.component.css'],
 })
 export class PetFormComponent implements OnInit {
-  @Input() owners: Owner[];
-  petName: string;
-  petType: 'dog' | 'cat' | 'fish';
+  @Input() pet: Pet;
+  owners: Owner[];
+  name: string;
+  type: 'dog' | 'cat' | 'fish';
   message = '';
-  petOwnerId: string;
-  petAge: string;
+  ownerId: string;
   file: File;
 
   constructor(private crudService: CrudService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.owners = this.crudService.getAllOwners();
+    if (this.pet) {
+      this.name = this.pet.name;
+      this.type = this.pet.type;
+      this.ownerId = this.pet.ownerId;
+    }
+  }
 
   handleFileInput(files: FileList) {
     this.file = files.item(0);
@@ -32,17 +39,25 @@ export class PetFormComponent implements OnInit {
       this.crudService.uploadImage(filename, this.file);
 
       this.crudService.createPet({
-        name: this.petName,
-        ownerId: this.petOwnerId,
-        type: this.petType,
+        name: this.name,
+        ownerId: this.ownerId,
+        type: this.type,
         imageId: filename,
       });
     } else {
       this.crudService.createPet({
-        name: this.petName,
-        ownerId: this.petOwnerId,
-        type: this.petType,
+        name: this.name,
+        ownerId: this.ownerId,
+        type: this.type,
       });
     }
+  }
+
+  updatePet() {
+    this.crudService.updatePet(this.pet.id, {
+      name: this.name,
+      type: this.type,
+      ownerId: this.ownerId,
+    });
   }
 }

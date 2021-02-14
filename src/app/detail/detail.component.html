@@ -8,14 +8,14 @@
               class="center-block img-responsive img-circle img-thumbnail thumb96"
               src="https://bootdey.com/img/Content/avatar/avatar1.png"
               alt="Contact"
+              width="300px"
             />
           </div>
           <h3 class="m0 text-bold">{{ owner.name }}</h3>
           <div class="mv-lg">
-            <p>
-              Hello, I'm a just a dummy contact in your contact list and this is
-              my presentation text. Have fun!
-            </p>
+            <li *ngFor="let pet of owner?.pets">
+              {{ pet.name }}
+            </li>
           </div>
           <div class="">
             <button class="btn btn-danger" (click)="onDelete()" >Delete Owner</button>

@@ -35,6 +35,9 @@ export class CrudService {
     return this.fireservice.doc(`Owners/${ownerId}`).update(data);
   }
 
+  updatePet(petId: string, data: Pet) {
+    return this.fireservice.doc(`Pets/${petId}`).update(data);
+  }
   async getOwnerByName(name: string) {
     const arr = [];
     (

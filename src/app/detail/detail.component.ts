@@ -8,7 +8,7 @@ import { CrudService, Owner } from '../service/crud.service';
   styleUrls: ['./detail.component.css'],
 })
 export class DetailComponent implements OnInit {
-  owner: Owner;
+  owner: any;
   name: string;
 
   constructor(
