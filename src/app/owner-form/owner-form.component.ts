@@ -56,5 +56,6 @@ export class OwnerFormComponent implements OnInit {
       email: this.email,
       phone: this.phone,
     });
+    location.reload();
   }
 }

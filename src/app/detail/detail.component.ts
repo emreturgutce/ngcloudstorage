@@ -23,5 +23,6 @@ export class DetailComponent implements OnInit {
 
   async onDelete() {
     await this.crudService.deleteOwner(this.owner.id);
+    location.href = '/'
   }
 }

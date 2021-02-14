@@ -28,5 +28,6 @@ export class DetailPetComponent implements OnInit {
 
   async onDelete() {
     await this.crudService.deletePet(this.pet.id);
+    location.href = '/'
   }
 }

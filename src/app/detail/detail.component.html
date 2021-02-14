@@ -17,6 +17,7 @@
             </div>
             <div class="mv">
               <ul class="list-group">
+                <li class="list-group-item bg-light font-weight-bold">Pets</li>
                 <li *ngFor="let pet of owner?.pets" class="list-group-item">
                   <a [routerLink]="['/pets', pet.id]">
                   {{ pet.name }}

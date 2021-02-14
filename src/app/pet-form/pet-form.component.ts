@@ -55,11 +55,12 @@ export class PetFormComponent implements OnInit {
     location.href = '/';
   }
 
-  updatePet() {
-    this.crudService.updatePet(this.pet.id, {
+  async updatePet() {
+    await this.crudService.updatePet(this.pet.id, {
       name: this.name,
       type: this.type,
       ownerId: this.ownerId,
     });
+    location.reload()
   }
 }
