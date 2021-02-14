@@ -2,16 +2,23 @@
   <h3>Owner List</h3>
   <a class="btn btn-primary" [routerLink]="['/create-owner']">Create Owner</a>
 </div>
-<hr />
-<div class="list-group">
-  <div
-    *ngFor="let owner of owners"
-    class="list-group-item list-group-item-action flex-column align-items-start"
-  >
-    <div class="d-flex w-100 justify-content-between align-items-center">
-      <a [routerLink]="['/owners', owner.name]">
-        <h5 class="mb-1">{{ owner.name }}</h5>
-      </a>
-    </div>
-  </div>
-</div>
+<table class="table table-hover mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let owner of owners">
+      <td>
+        <a [routerLink]="['/owners', owner.name]">{{ owner.name }}</a>
+      </td>
+      <td>{{ owner.email }}</td>
+      <td>{{ owner.phone }}</td>
+      <td>{{ owner.age }}</td>
+    </tr>
+  </tbody>
+</table>

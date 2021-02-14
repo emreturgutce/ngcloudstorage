@@ -19,6 +19,11 @@ export class DetailPetComponent implements OnInit {
   async ngOnInit() {
     this.name = this.route.snapshot.paramMap.get('name');
     this.pet = await this.crudService.getPetByName(this.name);
+    this.pet[
+      'imageId'
+    ] = `https://firebasestorage.googleapis.com/v0/b/angular-crud-5e572.appspot.com/o/${
+      this.pet.imageId || '350259.jpg'
+    }?alt=media&token=d882fdca-879e-4911-b83c-ec35a755584b`;
   }
 
   async onDelete() {
