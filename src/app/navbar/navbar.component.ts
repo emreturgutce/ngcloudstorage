@@ -18,5 +18,6 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.firebaseService.logout();
     this.isLogout.emit();
+    location.reload()
   }
 }

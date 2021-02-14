@@ -1,96 +1,81 @@
-<div class="panel panel-default">
+<div class="panel panel-default mt-2">
   <div class="panel-body">
     <div class="h4 text-center">Pet Form</div>
-    <div class="row pv-lg">
-      <div class="col-lg-3"></div>
-      <div class="col-lg-8">
-        <form class="form-horizontal ng-pristine ng-valid">
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="inputContact1"
-              >Name</label
-            >
-            <div class="col-sm-10">
-              <input
-                class="form-control"
-                id="inputContact1"
-                type="text"
-                [(ngModel)]="name"
-                name="name"
-              />
-            </div>
+    <div class="row pv-lg d-flex justify-content-center">
+      <form class="w-75 form-horizontal ng-pristine ng-valid">
+        <div class="form-group">
+          <label class="control-label" for="inputContact1">Name</label>
+          <div>
+            <input
+              class="form-control"
+              id="inputContact1"
+              type="text"
+              [(ngModel)]="name"
+              name="name"
+            />
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="inputContact2"
-              >Type</label
-            >
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="inputGroupSelect04">Type</label>
 
-            <div class="col-sm-10">
-              <select
-                class="custom-select"
-                id="inputGroupSelect04"
-                [(ngModel)]="type"
-                name="type"
-              >
-                <option selected></option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="fish">Fish</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="inputGroupSelect05"
-              >Owner</label
+          <div>
+            <select
+              class="custom-select"
+              id="inputGroupSelect04"
+              [(ngModel)]="type"
+              name="type"
             >
-            <div class="col-sm-10">
-              <select
-                class="custom-select"
-                id="inputGroupSelect05"
-                [(ngModel)]="ownerId"
-                name="ownerId"
-              >
-                <option [ngValue]="owner.id" *ngFor="let owner of owners">
-                  {{ owner.name }}
-                </option>
-              </select>
-            </div>
+              <option selected></option>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+              <option value="fish">Fish</option>
+            </select>
           </div>
-          <div class="form-group" *ngIf="!pet">
-            <label class="col-sm-2 control-label" for="dropzonebasicupload"
-              >File</label
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="inputGroupSelect05">Owner</label>
+          <div>
+            <select
+              class="custom-select"
+              id="inputGroupSelect05"
+              [(ngModel)]="ownerId"
+              name="ownerId"
             >
-            <div class="col-sm-10">
-              <div class="custom-file">
-                <input
-                  type="file"
-                  class="custom-file-input"
-                  id="dropzonebasicupload"
-                  accept="image/*"
-                  name="file"
-                  (change)="handleFileInput($event.target.files)"
-                />
-                <label class="custom-file-label" for="dropzonebasicupload">{{
-                  file?.name
-                }}</label>
-              </div>
+              <option [ngValue]="owner.id" *ngFor="let owner of owners">
+                {{ owner.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="!pet">
+          <label class="control-label" for="dropzonebasicupload">File</label>
+          <div>
+            <div class="custom-file">
+              <input
+                type="file"
+                class="custom-file-input"
+                id="dropzonebasicupload"
+                accept="image/*"
+                name="file"
+                (change)="handleFileInput($event.target.files)"
+              />
+              <label class="custom-file-label" for="dropzonebasicupload">{{
+                file?.name
+              }}</label>
             </div>
           </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button *ngIf="pet" class="btn btn-info" (click)="updatePet()">
-                Update
-              </button>
-              <button
-                *ngIf="!pet"
-                class="btn btn-success"
-                (click)="createPet()"
-              >
-                Create
-              </button>
-            </div>
+        </div>
+        <div class="form-group">
+          <div class="d-flex justify-content-end mt-3">
+            <button *ngIf="pet" class="btn btn-info" (click)="updatePet()">
+              Update
+            </button>
+            <button *ngIf="!pet" class="btn btn-success" (click)="createPet()">
+              Create
+            </button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

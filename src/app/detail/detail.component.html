@@ -13,12 +13,12 @@
           </div>
           <div class="my-3">
             <div class="list-group-item bg-light my-3">
-              <h3 class="text-bold">{{ owner?.name }}</h3>
+              <h3 class="text-bold m-auto">{{ owner?.name }}</h3>
             </div>
             <div class="mv">
               <ul class="list-group">
                 <li *ngFor="let pet of owner?.pets" class="list-group-item">
-                  <a [routerLink]="['/pets', pet.name]">
+                  <a [routerLink]="['/pets', pet.id]">
                   {{ pet.name }}
                   </a>
                 </li>

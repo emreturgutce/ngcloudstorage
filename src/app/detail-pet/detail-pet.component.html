@@ -8,21 +8,21 @@
               class="center-block img-responsive img-circle img-thumbnail thumb96"
               [src]="pet?.imageId"
               alt="Contact"
-              width="300px"
+              width="100%"
             />
           </div>
           <div class="list-group-item bg-light rounded my-3">
-            <h3 class="m0 text-bold">{{ pet.name }}</h3>
+            <h3 class="m0 text-bold m-auto">{{ pet?.name }}</h3>
           </div>
           <div class="">
-            <button class="btn btn-danger" (click)="onDelete()">
+            <button class="btn btn-danger w-100 font-weight-bold" (click)="onDelete()">
               Delete Pet
             </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8" *ngIf="pet">
       <app-pet-form [pet]="pet"></app-pet-form>
     </div>
   </div>

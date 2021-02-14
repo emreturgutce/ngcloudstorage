@@ -17,7 +17,6 @@ export class OwnerFormComponent implements OnInit {
   constructor(private crudService: CrudService) {}
 
   async ngOnInit() {
-    console.log(this.owner);
     if (this.owner) {
       this.name = this.owner.name;
       this.email = this.owner.email;

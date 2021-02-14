@@ -59,14 +59,12 @@ export class CrudService {
     };
   }
 
-  async getPetByName(name: string) {
+  async getPetById(id: string) {
     const arr = [];
-    (
-      await this.fireservice
-        .collection('Pets')
-        .ref.where('name', '==', name)
-        .get()
-    ).forEach((doc) => arr.push({ ...(doc.data() as object), id: doc.id }));
+    await this.fireservice
+      .doc(`Pets/${id}`)
+      .get()
+      .forEach((doc) => arr.push({ ...(doc.data() as object), id: doc.id }));
     return arr[0];
   }
 

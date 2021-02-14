@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.owners = this.crudService.getAllOwners();
     this.pets = this.crudService.getPets();
-    console.log(this.pets)
   }
 
   logout() {

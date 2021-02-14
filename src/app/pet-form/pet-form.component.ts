@@ -52,7 +52,7 @@ export class PetFormComponent implements OnInit {
       });
     }
 
-    //location.href = '/';
+    location.href = '/';
   }
 
   updatePet() {

@@ -19,7 +19,6 @@ export class DetailComponent implements OnInit {
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.owner = await this.crudService.getOwnerById(this.id);
-    console.log(this.owner)
   }
 
   async onDelete() {

@@ -12,7 +12,7 @@
   <tbody>
     <tr *ngFor="let pet of pets">
       <td>
-        <a [routerLink]="['/pets', pet.name]">{{ pet.name }}</a>
+        <a [routerLink]="['/pets', pet.id ]">{{ pet.name }}</a>
       </td>
       <td>{{ pet.type }}</td>
     </tr>

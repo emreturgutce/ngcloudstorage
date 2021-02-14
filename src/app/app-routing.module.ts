@@ -9,7 +9,7 @@ import { DetailPetComponent } from './detail-pet/detail-pet.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'owners/:id', component: DetailComponent },
-  { path: 'pets/:name', component: DetailPetComponent },
+  { path: 'pets/:id', component: DetailPetComponent },
   { path: 'create-owner', component: OwnerFormComponent },
   { path: 'create-pet', component: PetFormComponent },
 ];
