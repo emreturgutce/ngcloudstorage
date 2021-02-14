@@ -1,4 +1,4 @@
-<div class="bootstrap snippets bootdey">
+<div class="bootstrap snippets bootdey mt-2">
   <div class="row ng-scope">
     <div class="col-md-4">
       <div class="panel panel-default">
@@ -8,11 +8,12 @@
               class="center-block img-responsive img-circle img-thumbnail thumb96"
               src="https://bootdey.com/img/Content/avatar/avatar1.png"
               alt="Contact"
+              width="100%"
             />
           </div>
           <div class="my-3">
             <div class="list-group-item bg-light my-3">
-              <h3 class="text-bold">{{ owner.name }}</h3>
+              <h3 class="text-bold">{{ owner?.name }}</h3>
             </div>
             <div class="mv">
               <ul class="list-group">
@@ -25,14 +26,14 @@
             </div>
           </div>
           <div class="">
-            <button class="btn btn-danger" (click)="onDelete()">
+            <button class="btn btn-danger w-100 font-weight-bold" (click)="onDelete()">
               Delete Owner
             </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-8">
+    <div *ngIf="owner" class="col-md-8">
       <app-owner-form [owner]="owner"></app-owner-form>
     </div>
   </div>

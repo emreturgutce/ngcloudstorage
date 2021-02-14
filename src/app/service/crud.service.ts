@@ -38,27 +38,23 @@ export class CrudService {
   updatePet(petId: string, data: Pet) {
     return this.fireservice.doc(`Pets/${petId}`).update(data);
   }
-  async getOwnerByName(name: string) {
+  async getOwnerById(id: string) {
     const arr = [];
-    (
-      await this.fireservice
-        .collection('Owners')
-        .ref.where('name', '==', name)
-        .get()
-    ).forEach((doc) => arr.push({ ...(doc.data() as object), id: doc.id }));
-
-    const owner = arr[0];
+    await this.fireservice
+      .doc(`Owners/${id}`)
+      .get()
+      .forEach((doc) => arr.push({ ...(doc.data() as object), id: doc.id }));
 
     const pets = [];
     (
       await this.fireservice
         .collection('Pets')
-        .ref.where('ownerId', '==', owner.id)
+        .ref.where('ownerId', '==', id)
         .get()
     ).forEach((doc) => pets.push({ ...(doc.data() as object), id: doc.id }));
 
     return {
-      ...owner,
+      ...arr[0],
       pets,
     };
   }

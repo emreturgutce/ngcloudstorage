@@ -7,7 +7,7 @@ import { CrudService, Owner } from '../service/crud.service';
   styleUrls: ['./owner-form.component.css'],
 })
 export class OwnerFormComponent implements OnInit {
-  @Input() owner: Owner;
+  @Input() owner: any;
   message = '';
   name: string;
   email: string;
@@ -17,6 +17,7 @@ export class OwnerFormComponent implements OnInit {
   constructor(private crudService: CrudService) {}
 
   async ngOnInit() {
+    console.log(this.owner);
     if (this.owner) {
       this.name = this.owner.name;
       this.email = this.owner.email;
