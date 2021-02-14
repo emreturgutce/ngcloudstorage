@@ -7,53 +7,54 @@ import { CrudService, Owner } from '../service/crud.service';
   styleUrls: ['./owner-form.component.css'],
 })
 export class OwnerFormComponent implements OnInit {
+  @Input() owner: Owner;
   message = '';
-  ownerName: string;
-  ownerAge: number;
-  ownerAddress: string;
-  owner: any;
-  @Input() name: string;
+  name: string;
+  email: string;
+  phone: string;
+  age: number;
 
   constructor(private crudService: CrudService) {}
 
   async ngOnInit() {
-    if (this.name) {
-      this.owner = await this.crudService.getOwnerByName(this.name);
-
-      this.ownerName = this.owner.name;
-      this.ownerAge = this.owner.age;
-      this.ownerAddress = this.owner.address;
+    if (this.owner) {
+      this.name = this.owner.name;
+      this.email = this.owner.email;
+      this.phone = this.owner.phone;
+      this.age = this.owner.age;
     }
   }
 
-  async createRecord() {
-    if (!this.name) {
-      try {
-        const record: any = {
-          name: this.ownerName,
-          age: this.ownerAge,
-          address: this.ownerAddress,
-          pets: [],
-        };
-
-        await this.crudService.createNewOwner(record);
-
-        this.message = 'Record saved to Firebase';
-      } catch (error) {
-        console.error(error);
-      } finally {
-        this.ownerName = '';
-        this.ownerAge = undefined;
-        this.ownerAddress = '';
-      }
-    } else {
-      const record = {
-        name: this.ownerName,
-        age: this.ownerAge,
-        address: this.ownerAddress,
+  async handleCreate() {
+    try {
+      const record: any = {
+        name: this.name,
+        age: this.age,
+        email: this.email,
+        phone: this.phone,
       };
 
-      await this.crudService.updateOwner(this.owner.id, record as Owner);
+      await this.crudService.createNewOwner(record);
+
+      this.message = 'Record saved to Firebase';
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.name = '';
+      this.age = undefined;
+      this.email = '';
+      this.phone = '';
     }
+
+    location.href = '/';
+  }
+
+  async handleUpdate() {
+    await this.crudService.updateOwner(this.owner.id, {
+      name: this.name,
+      age: this.age,
+      email: this.email,
+      phone: this.phone,
+    });
   }
 }

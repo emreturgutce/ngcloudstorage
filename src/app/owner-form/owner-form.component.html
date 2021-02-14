@@ -1,42 +1,74 @@
-<div>
-  <h3>Owner Form</h3>
-</div>
-<hr />
-<div class="form-group">
-  <input
-    type="text"
-    class="form-control"
-    [(ngModel)]="ownerName"
-    placeholder="Enter Owner Name"
-  />
-</div>
-<div class="form-group">
-  <input
-    type="number"
-    class="form-control"
-    [(ngModel)]="ownerAge"
-    placeholder="Enter Owner Age"
-  />
-</div>
-<div class="form-group">
-  <input
-    type="text"
-    class="form-control"
-    [(ngModel)]="ownerAddress"
-    placeholder="Enter Owner Address"
-  />
-</div>
-<div class="form-group">
-  <button
-    class="btn btn-primary"
-    [disabled]="!ownerName || !ownerAge || !ownerAddress"
-    (click)="createRecord()"
-  >
-    Create Owner
-  </button>
-</div>
-<div class="form-group">
-  <h4>
-    <b>{{ message }}</b>
-  </h4>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="h4 text-center">Owner Form</div>
+    <div class="row pv-lg">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-8">
+        <form class="form-horizontal ng-pristine ng-valid">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputContact1"
+              >Name</label
+            >
+            <div class="col-sm-10">
+              <input
+                class="form-control"
+                id="inputContact1"
+                type="text"
+                [(ngModel)]="name"
+                name="name"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputContact2"
+              >Email</label
+            >
+            <div class="col-sm-10">
+              <input
+                class="form-control"
+                id="inputContact2"
+                type="email"
+                [(ngModel)]="email"
+                name="email"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputContact3"
+              >Phone</label
+            >
+            <div class="col-sm-10">
+              <input
+                class="form-control"
+                id="inputContact3"
+                type="text"
+                [(ngModel)]="phone"
+                name="phone"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputContact4"
+              >Age</label
+            >
+            <div class="col-sm-10">
+              <input
+                class="form-control"
+                id="inputContact4"
+                type="number"
+                [(ngModel)]="age"
+                name="age"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button *ngIf="owner" class="btn btn-info" (click)="handleUpdate()">Update</button>
+              <button *ngIf="!owner" class="btn btn-success" (click)="handleCreate()">Create</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

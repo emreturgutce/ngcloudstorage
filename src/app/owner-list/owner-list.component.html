@@ -1,5 +1,6 @@
-<div>
+<div class="d-flex justify-content-between align-items-center">
   <h3>Owner List</h3>
+  <a class="btn btn-primary" [routerLink]="['/create-owner']">Create Owner</a>
 </div>
 <hr />
 <div class="list-group">
@@ -11,14 +12,6 @@
       <a [routerLink]="['/owners', owner.name]">
         <h5 class="mb-1">{{ owner.name }}</h5>
       </a>
-      <div>
-        <a class="btn btn-success mr-3" [routerLink]="['/edit', owner.name]"
-          >Edit</a
-        >
-        <button class="btn btn-danger" (click)="handleDelete(owner.id)">
-          Delete
-        </button>
-      </div>
     </div>
   </div>
 </div>

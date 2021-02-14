@@ -20,4 +20,8 @@ export class DetailComponent implements OnInit {
     this.name = this.route.snapshot.paramMap.get('name');
     this.owner = await this.crudService.getOwnerByName(this.name);
   }
+
+  async onDelete() {
+    await this.crudService.deleteOwner(this.owner.id);
+  }
 }

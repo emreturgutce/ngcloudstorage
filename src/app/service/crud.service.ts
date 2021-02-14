@@ -3,14 +3,15 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 
 export interface Owner {
-  id: string;
+  id?: string;
   name: string;
   age: number;
-  address: string;
-  pets: any[];
+  email: string;
+  phone: string;
 }
 
 export interface Pet {
+  id?: string;
   name: string;
   type: 'dog' | 'cat' | 'fish';
   ownerId: string;
@@ -83,5 +84,20 @@ export class CrudService {
   }
   createPet(pet: Pet) {
     return this.fireservice.collection('Pets').add(pet);
+  }
+
+  getPets(): Pet[] {
+    const pets: Pet[] = [];
+
+    this.fireservice
+      .collection('Pets')
+      .get()
+      .forEach((doc) =>
+        doc.docs.forEach((d) =>
+          pets.push({ ...(d.data() as object), id: d.id } as Pet)
+        )
+      );
+
+    return pets;
   }
 }

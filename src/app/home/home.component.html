@@ -1,13 +1,8 @@
 <div>
-  <div class="d-flex justify-content-between">
-    <div class="flex-grow-1 mr-lg-4">
-      <app-owner-form></app-owner-form>
-    </div>
-    <div class="flex-grow-1">
-      <app-pet-form [owners]="owners"></app-pet-form>
-    </div>
-  </div>
-  <div>
+  <div class="mt-5">
     <app-owner-list [owners]="owners"></app-owner-list>
+  </div>
+  <div class="mt-5">
+    <app-pet-list [pets]="pets"></app-pet-list>
   </div>
 </div>

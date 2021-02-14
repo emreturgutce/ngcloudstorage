@@ -1,10 +1,30 @@
-<div class="card">
-  <div class="card-header">
-    {{ owner?.name }}
-  </div>
-  <div class="card-body">
-    <ul class="list">
-      <li *ngFor="let pet of owner?.pets">{{ pet?.name }}</li>
-    </ul>
+<div class="bootstrap snippets bootdey">
+  <div class="row ng-scope">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body text-center">
+          <div class="pv-lg">
+            <img
+              class="center-block img-responsive img-circle img-thumbnail thumb96"
+              src="https://bootdey.com/img/Content/avatar/avatar1.png"
+              alt="Contact"
+            />
+          </div>
+          <h3 class="m0 text-bold">{{ owner.name }}</h3>
+          <div class="mv-lg">
+            <p>
+              Hello, I'm a just a dummy contact in your contact list and this is
+              my presentation text. Have fun!
+            </p>
+          </div>
+          <div class="">
+            <button class="btn btn-danger" (click)="onDelete()" >Delete Owner</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <app-owner-form [owner]="owner"></app-owner-form>
+    </div>
   </div>
 </div>

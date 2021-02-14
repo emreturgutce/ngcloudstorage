@@ -15,9 +15,9 @@ import { OwnerListComponent } from './owner-list/owner-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { OwnerFormComponent } from './owner-form/owner-form.component';
 import { PetFormComponent } from './pet-form/pet-form.component';
-import { EditOwnerComponent } from './edit-owner/edit-owner.component';
+import { PetListComponent } from './pet-list/pet-list.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DetailComponent, OwnerListComponent, NavbarComponent, OwnerFormComponent, PetFormComponent, EditOwnerComponent],
+  declarations: [AppComponent, HomeComponent, DetailComponent, OwnerListComponent, NavbarComponent, OwnerFormComponent, PetFormComponent, PetListComponent],
   imports: [
     BrowserModule,
     FormsModule,

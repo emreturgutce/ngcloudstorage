@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CrudService, Owner } from '../service/crud.service';
+import { CrudService, Owner, Pet } from '../service/crud.service';
 import { FirebaseService } from '../service/firebase.service';
 
 @Component({
@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   @Output() isLogout = new EventEmitter<void>();
   title = 'ngcloudstorage';
   owners: Owner[];
+  pets: Pet[]
   
   constructor(
     private crudService: CrudService,
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.owners = this.crudService.getAllOwners();
-    console.log(this.owners)
+    this.pets = this.crudService.getPets();
+    console.log(this.pets)
   }
 
   logout() {

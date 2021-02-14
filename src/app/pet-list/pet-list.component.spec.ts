@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditOwnerComponent } from './edit-owner.component';
+import { PetListComponent } from './pet-list.component';
 
-describe('EditOwnerComponent', () => {
-  let component: EditOwnerComponent;
-  let fixture: ComponentFixture<EditOwnerComponent>;
+describe('PetListComponent', () => {
+  let component: PetListComponent;
+  let fixture: ComponentFixture<PetListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditOwnerComponent ]
+      declarations: [ PetListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditOwnerComponent);
+    fixture = TestBed.createComponent(PetListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

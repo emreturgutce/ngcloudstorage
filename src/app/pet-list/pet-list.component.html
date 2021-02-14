@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h3>Pet List</h3>
+  <a class="btn btn-primary" [routerLink]="['/create-pet']">Create Pet</a>
+</div>
+<hr />
+<div class="list-group">
+  <div
+    *ngFor="let pet of pets"
+    class="list-group-item list-group-item-action flex-column align-items-start"
+  >
+    <div class="d-flex w-100 justify-content-between align-items-center">
+      <a [routerLink]="['/pets', pet.name]">
+        <h5 class="mb-1">{{ pet?.name }}</h5>
+      </a>
+      <div>
+        <a class="btn btn-success mr-3" [routerLink]="['/edit', pet.name]"
+          >Edit</a
+        >
+        <button class="btn btn-danger" (click)="handleDelete(pet.name)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
