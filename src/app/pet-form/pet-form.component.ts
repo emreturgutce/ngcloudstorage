@@ -31,14 +31,14 @@ export class PetFormComponent implements OnInit {
 
       this.crudService.uploadImage(filename, this.file);
 
-      this.crudService.addPetToOwner({
+      this.crudService.createPet({
         name: this.petName,
         ownerId: this.petOwnerId,
         type: this.petType,
         imageId: filename,
       });
     } else {
-      this.crudService.addPetToOwner({
+      this.crudService.createPet({
         name: this.petName,
         ownerId: this.petOwnerId,
         type: this.petType,

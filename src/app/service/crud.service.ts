@@ -43,7 +43,20 @@ export class CrudService {
         .get()
     ).forEach((doc) => arr.push({ ...(doc.data() as object), id: doc.id }));
 
-    return arr[0];
+    const owner = arr[0];
+
+    const pets = [];
+    (
+      await this.fireservice
+        .collection('Pets')
+        .ref.where('ownerId', '==', owner.id)
+        .get()
+    ).forEach((doc) => pets.push({ ...(doc.data() as object), id: doc.id }));
+
+    return {
+      ...owner,
+      pets,
+    };
   }
 
   deleteOwner(ownerId: string) {
@@ -68,9 +81,7 @@ export class CrudService {
 
     return owners;
   }
-  async addPetToOwner(pet: Pet) {
-    return this.fireservice
-      .doc(`Owners/${pet.ownerId}`)
-      .update({ pets: { name: pet.name, type: pet.type, image: pet.imageId } });
+  createPet(pet: Pet) {
+    return this.fireservice.collection('Pets').add(pet);
   }
 }

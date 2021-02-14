@@ -4,7 +4,7 @@
   </div>
   <div class="card-body">
     <ul class="list">
-		<li>{{ owner?.pets?.name }}</li>
-	</ul>
+      <li *ngFor="let pet of owner?.pets">{{ pet?.name }}</li>
+    </ul>
   </div>
 </div>
