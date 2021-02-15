@@ -30,13 +30,13 @@ export class PetFormComponent implements OnInit {
     this.file = files.item(0);
   }
 
-  createPet() {
+  async createPet() {
     if (this.file) {
       const filename = `${String(Math.floor(Math.random() * 1000000))}.${
         this.file.name.split('.')[1]
       }`;
 
-      this.crudService.uploadImage(filename, this.file);
+      await this.crudService.uploadImage(filename, this.file);
 
       this.crudService.createPet({
         name: this.name,

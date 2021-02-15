@@ -34,8 +34,8 @@ export class CrudService {
     private storage: AngularFireStorage
   ) {}
 
-  uploadImage(imageId: string, file: File) {
-    this.storage.upload(imageId, file);
+  async uploadImage(imageId: string, file: File) {
+    await this.storage.upload(imageId, file);
   }
 
   updateOwner(ownerId: string, data: Owner) {
