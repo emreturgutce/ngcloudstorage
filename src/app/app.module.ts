@@ -17,8 +17,10 @@ import { OwnerFormComponent } from './owner-form/owner-form.component';
 import { PetFormComponent } from './pet-form/pet-form.component';
 import { PetListComponent } from './pet-list/pet-list.component';
 import { DetailPetComponent } from './detail-pet/detail-pet.component';
+import { AdminListComponent } from './admin-list/admin-list.component';
+import { AdminFormComponent } from './admin-form/admin-form.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DetailComponent, OwnerListComponent, NavbarComponent, OwnerFormComponent, PetFormComponent, PetListComponent, DetailPetComponent],
+  declarations: [AppComponent, HomeComponent, DetailComponent, OwnerListComponent, NavbarComponent, OwnerFormComponent, PetFormComponent, PetListComponent, DetailPetComponent, AdminListComponent, AdminFormComponent],
   imports: [
     BrowserModule,
     FormsModule,
