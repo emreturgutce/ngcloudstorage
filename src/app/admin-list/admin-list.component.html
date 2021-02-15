@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-between align-items-center mt-2">
+  <h3>Admin List</h3>
+  <a class="btn btn-primary" [routerLink]="['/admin-form']">Create Admin</a>
+</div>
+<table class="table table-hover mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let admin of admins">
+      <td>{{ admin?.email }}</td>
+      <td class="text-right">
+        <a
+          class="btn btn-success mr-2"
+          [routerLink]="['/admin-form', admin?.id]"
+          >Edit</a
+        >
+        <button
+          class="btn btn-danger m-auto"
+          (click)="handleDelete(admin?.id, admin?.email, admin?.password)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

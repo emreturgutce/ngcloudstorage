@@ -19,6 +19,12 @@ export interface Pet {
   imageId?: string;
 }
 
+export interface Admin {
+  id?: string;
+  email: string;
+  password: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -110,5 +116,41 @@ export class CrudService {
       );
 
     return pets;
+  }
+
+  createAdmin(admin: Admin) {
+    return this.fireservice.collection('Admins').add(admin);
+  }
+
+  deleteAdmin(adminId: string) {
+    return this.fireservice.doc(`Admins/${adminId}`).delete();
+  }
+
+  getAdmins() {
+    const admins: Admin[] = [];
+
+    this.fireservice
+      .collection('Admins')
+      .get()
+      .forEach((doc) =>
+        doc.docs.forEach((d) =>
+          admins.push({ ...(d.data() as object), id: d.id } as Admin)
+        )
+      );
+
+    return admins;
+  }
+
+  async getAdminById(id: string) {
+    const arr = [];
+    await this.fireservice
+      .doc(`Admins/${id}`)
+      .get()
+      .forEach((doc) => arr.push({ ...(doc.data() as object), id: doc.id }));
+    return arr[0];
+  }
+
+  updateAdmin(adminId: string, data: Admin) {
+    return this.fireservice.doc(`Admins/${adminId}`).update(data);
   }
 }

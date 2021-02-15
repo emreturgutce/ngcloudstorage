@@ -5,5 +5,8 @@
     <img src="/assets/dog.png" alt="logo" width="36px" class="mr-3" />
     <span class="m-auto">Pets App</span>
   </a>
-  <button class="btn btn-danger" (click)="logout()">Logout</button>
+  <div class="d-flex align-items-center">
+    <a class="nav-link mr-3" [routerLink]="['/admin-list']">Admin List</a>
+    <button class="btn btn-danger" (click)="logout()">Logout</button>
+  </div>
 </nav>
