@@ -36,16 +36,17 @@ export class PetFormComponent implements OnInit {
         this.file.name.split('.')[1]
       }`;
 
-      await this.crudService.uploadImage(filename, this.file);
-
-      this.crudService.createPet({
-        name: this.name,
-        ownerId: this.ownerId,
-        type: this.type,
-        imageId: filename,
-      });
+      await Promise.all([
+        this.crudService.uploadImage(filename, this.file),
+        this.crudService.createPet({
+          name: this.name,
+          ownerId: this.ownerId,
+          type: this.type,
+          imageId: filename,
+        }),
+      ]);
     } else {
-      this.crudService.createPet({
+      await this.crudService.createPet({
         name: this.name,
         ownerId: this.ownerId,
         type: this.type,
@@ -61,6 +62,6 @@ export class PetFormComponent implements OnInit {
       type: this.type,
       ownerId: this.ownerId,
     });
-    location.reload()
+    location.reload();
   }
 }
